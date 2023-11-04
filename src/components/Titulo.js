@@ -3,7 +3,7 @@ import '../styles/Titulo.css'
 function Titulo(props) {
   return (
     <div className='container d-flex justify-content-center align-items-center'>
-        <h1 className='titulo-registroEmpleado'>
+        <h1 className='titulo'>
             {props.name}
         </h1>
     </div>

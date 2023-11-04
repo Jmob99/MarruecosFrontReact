@@ -1,9 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import '../styles/RegistroEmpleado.css'
 import { Titulo } from './Titulo'
 import { Logo } from './Logo'
 
+
 function RegistroEmpleados() {
+
+    const [form, setForm] = useState({});
+    const [password, setPassword] = useState(false);
+
+    const inputs = (e) => {
+        setForm({
+            ...form,
+            [e.target.name]: e.target.value,
+        })
+    }
+    const checks = (e) => {
+        const isChecked = e.target.checked;
+        setForm({
+            ...form,
+            [e.target.name]: isChecked
+
+        })
+
+        setPassword(isChecked);
+
+    }
+
     return (
         <div>
             <Logo />
@@ -14,18 +37,44 @@ function RegistroEmpleados() {
                 <form className="form-registroEmpleado">
                     <div className="form-group">
                         <label htmlFor="usuario" id="label-usuario">Nombre de usuario</label>
-                        <input type="text" id="usuario" className="form-control mb-3" />
+                        <input type="text"
+                            id="usuario"
+                            name='usuario'
+                            className="form-control mb-3"
+                            onChange={inputs}
+                            value={form.usuario}
+
+                        />
                     </div>
                     <div className="form-group">
                         <label htmlFor="email" id="label-email">Email</label>
-                        <input type="email" id="email" className="form-control mb-3" />
+                        <input type="email"
+                            id="email"
+                            name='email'
+                            className="form-control mb-3"
+                            onChange={inputs}
+                            value={form.email}
+                        />
                     </div>
                     <div className="form-group">
                         <label htmlFor="password" id="label-password">Contraseña</label>
-                        <input type="password" id="password" className="form-control mb-3" />
+                        <input type={password ? 'text' : 'password'}
+                            id="password"
+                            className="form-control mb-3"
+                            name='contraseña'
+                            onChange={inputs}
+                            value={form.password}
+                        />
                     </div>
                     <div className="contraseña">
-                        <input type="checkbox" id="checkbox" value="Mostrar contraseña" />
+                        <input type="checkbox"
+                            id="checkbox"
+                            value="Mostrar contraseña"
+                            name='checkbox'
+                            onChange={checks}
+
+
+                        />
                         <label id="label" className='checkLabel'>Mostrar contraseña</label>
                     </div>
                     <div className="d-flex justify-content-between">
