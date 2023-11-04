@@ -1,0 +1,7 @@
+.logo {
+    margin-right: 3rem;
+    margin-top: 3rem;
+    max-height: 150px;
+    width: auto;
+    transition: all 0.3s;
+}
