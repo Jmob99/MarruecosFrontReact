@@ -1,8 +1,8 @@
 import React from 'react';
 import { Logo } from './Logo';
 import { Titulo } from './Titulo';
-import { BtnOpciones } from './BtnOpciones';
 import { Link } from 'react-router-dom';
+import { BtnOpciones } from './BtnOpciones';
 
 
 function Inicio() {
