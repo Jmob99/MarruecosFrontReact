@@ -1,0 +1,15 @@
+#btn_opt {
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: medium;
+  font-family: "Rajdhani", sans-serif;
+  padding: 10px;
+  font-weight: bold;
+  color: rgb(14, 13, 13);
+  background-color: #dddddd;
+  box-shadow: 5px 5px rgb(169, 130, 92);
+  border-radius: 5%;
+  width: 250px;
+  height: auto;
+  text-decoration: none;
+}

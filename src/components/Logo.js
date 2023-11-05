@@ -1,5 +1,5 @@
-import React from 'react'
-import '../styles/Logo.css'
+import React from 'react';
+import '../styles/Logo.css';
 function Logo() {
   return (
     <div className="d-flex justify-content-end">
