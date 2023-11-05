@@ -1,5 +1,5 @@
-import React from 'react'
-import '../styles/Titulo.css'
+import React from 'react';
+import '../styles/Titulo.css';
 function Titulo(props) {
   return (
     <div className='container d-flex justify-content-center align-items-center'>

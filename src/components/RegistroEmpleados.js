@@ -1,7 +1,8 @@
-import React, { useState } from 'react'
-import '../styles/RegistroEmpleado.css'
-import { Titulo } from './Titulo'
-import { Logo } from './Logo'
+import React, { useState } from 'react';
+import '../styles/RegistroEmpleado.css';
+import { Titulo } from './Titulo';
+import { Logo } from './Logo';
+import { Link } from 'react-router-dom';
 
 
 function RegistroEmpleados() {
@@ -26,7 +27,6 @@ function RegistroEmpleados() {
         setPassword(isChecked);
 
     }
-
     return (
         <div>
             <Logo />
@@ -78,9 +78,12 @@ function RegistroEmpleados() {
                         <label id="label" className='checkLabel'>Mostrar contraseña</label>
                     </div>
                     <div className="d-flex justify-content-between">
-                        <button type="submit" id="btnMenuPrincipal">
-                            Menu Principal
-                        </button>
+                        <Link to="/">
+                            <button type="submit" id="btnMenuPrincipal">
+                                Menu Principal
+                            </button>
+                        </Link>
+
                         <button type="submit" id="btn-registro">Registrar</button>
                     </div>
                 </form>
