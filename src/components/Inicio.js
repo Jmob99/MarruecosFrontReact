@@ -1,14 +1,14 @@
 import React from 'react';
 import { Logo } from './Logo';
 import { Titulo } from './Titulo';
-import { BtnOpciones } from './BtnOpciones';
 import { Link } from 'react-router-dom';
+import { BtnOpciones } from './BtnOpciones';
 
 
 function Inicio() {
     const linkStyles = {
-        textDecoration: 'none', // Quital el subrayado
-        color: 'inherit', // Mantiene el color de texto predeterminado
+        textDecoration: 'none', 
+        color: 'inherit', 
       };
     return (
         <div>
