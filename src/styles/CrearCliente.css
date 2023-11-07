@@ -1,0 +1,179 @@
+/*Estilos generales*/
+
+/* Parrafo campos obligatorios*/
+
+.parrafo-title {
+  font-size: large;
+  font-family: cursive;
+  color: black;
+  font-weight: bold;
+  font-family: "Fira Sans", sans-serif;
+  margin-left: 8rem;
+}
+
+.inputCliente {
+  display: flex;
+  flex-direction: column;
+}
+
+.consultaCliente {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: 60px;
+}
+
+label {
+  font-size: large;
+  font-family: "Tajawal", sans-serif;
+  font-weight: 545;
+  margin-bottom: 5px;
+}
+
+#formCliente {
+  width: 200px;
+  height: 30px;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: bold;
+}
+
+.container-btn {
+  display: flex;
+  position: relative;
+  top: 11px;
+  right: 30px;
+}
+
+#btnBuscar {
+  cursor: pointer;
+  margin-top: 6px;
+  margin-left: 50px;
+  font-size: medium;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: 10px;
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: #da6516;
+  box-shadow: 3px 3px rgb(169, 130, 92);
+  border-radius: 3%;
+  width: 70px;
+  height: 33px;
+}
+
+/* Formulario registro de cliente */
+
+.registroCliente {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  top: 160px;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-form {
+  width: 100%;
+  margin-left: 60px;
+}
+
+.right-form {
+  width: 100%;
+  margin-left: 60px;
+}
+
+fieldset {
+  border: 10px double darkgoldenrod;
+  background-color: rgb(253, 232, 175);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+fieldset label {
+  font-size: 20px;
+  font-family: "Tajawal", sans-serif;
+  height: 30px;
+  width: 250px;
+  margin-top: 10px;
+  margin-bottom: auto;
+}
+
+fieldset input,
+fieldset select,
+option {
+  font-size: 18px;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: bolder;
+  height: 30px;
+  width: 250px;
+  margin-bottom: 20px;
+}
+
+/* Botones de registro de clientes */
+
+.container-botones {
+  margin-top: 13rem;
+}
+
+#btnEliminar {
+  cursor: pointer;
+  font-size: medium;
+  font-family: "Fira Sans", sans-serif;
+  border: 10px;
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: #ec2c1c;
+  box-shadow: 3px 3px rgb(169, 130, 92);
+  border-radius: 3%;
+  width: 120px;
+  height: 40px;
+}
+
+#btnModificar {
+  cursor: pointer;
+  font-size: medium;
+  font-family: "Fira Sans", sans-serif;
+  border: 10px;
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: #da6516;
+  box-shadow: 4px 3px rgb(169, 130, 92);
+  border-radius: 3%;
+  width: 120px;
+  height: 40px;
+}
+
+#btnCrear {
+  cursor: pointer;
+  font-size: medium;
+  font-family: "Fira Sans", sans-serif;
+  border: 10px;
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: #53462d;
+  box-shadow: 3px 3px rgb(169, 130, 92);
+  border-radius: 3%;
+  width: 120px;
+  height: 40px;
+}
+
+/* Btn menu principal*/
+
+#btnMenuPrincipal {
+  cursor: pointer;
+  font-size: medium;
+  font-family: "Fira Sans", sans-serif;
+  border: 10px;
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: #0b52c5;
+  box-shadow: 3px 3px rgb(169, 130, 92);
+  border-radius: 3%;
+  width: 150px;
+  height: 40px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  margin-left: 40px;
+}
