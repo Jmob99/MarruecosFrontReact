@@ -100,7 +100,7 @@ function CrearCliente() {
                     id="email"
                     name="correo"
                     className="form-control"
-                    autocomplete="off"
+                    autocomplete="on"
                     onChange={inputs}
                     value={from.email}
                   />
@@ -118,7 +118,7 @@ function CrearCliente() {
                   <select
                     name="tipo-documento"
                     id="tipoDocumento"
-                    className="form-control"
+                    className="form-select"
                     value={tipoDocumentoSeleccionado}
                     onChange={(e) =>
                       setTipoDocumentoSeleccionado(e.target.value)
