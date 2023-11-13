@@ -29,14 +29,14 @@ function RegistroEmpleados() {
     const nomUsuario = form.usuario;
     
     if (!nomUsuario) {
-      alert("El campo Nombre de usuario no puede estar vacío");
+      alert("El campo nombre de usuario no puede estar vacío");
       e.preventDefault();
       return;
     } 
     const valorEmail = form.email;
 
     if (!valorEmail) {
-      alert("El Email no puede estar vacio");
+      alert("El campo email no puede estar vacio");
       e.preventDefault();
       return;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valorEmail)) {
