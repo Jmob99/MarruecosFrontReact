@@ -5,11 +5,11 @@ import { Logo } from "./Logo";
 import { Link } from "react-router-dom";
 
 function CrearCliente() {
-  const [from, setForm] = useState({});
+  const [form, setForm] = useState({});
 
   const inputs = (e) => {
     setForm({
-      ...from,
+      ...form,
       [e.target.name]: e.target.value,
     });
   };
@@ -29,14 +29,14 @@ function CrearCliente() {
 
       <form className="consultaCliente">
         <div className="inputCliente">
-          <label htmlFor="formCliente">Ingrese documento</label>
+          <label for="formCliente">Ingrese documento</label>
           <input
             type="text"
             maxlength="15"
             name="cliente"
             id="formCliente"
             onChange={inputs}
-            value={from.formCliente}
+            value={form.formCliente}
           />
         </div>
 
@@ -52,7 +52,7 @@ function CrearCliente() {
             <form className="registroCliente">
               <fieldset className="left-form">
                 <div className="form-group">
-                  <label htmlFor="nombre" className="texto-formulario">
+                  <label for="nombre" className="texto-formulario">
                     * Nombre
                   </label>
                   <input
@@ -61,11 +61,11 @@ function CrearCliente() {
                     name="nombre-cliente"
                     className="form-control"
                     onChange={inputs}
-                    value={from.nombre}
+                    value={form.nombre}
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="apellido" className="texto-formulario">
+                  <label for="apellido" className="texto-formulario">
                     * Apellido
                   </label>
                   <input
@@ -73,10 +73,13 @@ function CrearCliente() {
                     id="apellido"
                     name="apellido-cliente"
                     className="form-control"
-                                      />
+                    onChange={inputs}
+                    value={form.apellido}
+                  />
+
                 </div>
                 <div className="form-group">
-                  <label htmlFor="fechaNac" className="texto-formulario">
+                  <label for="fechaNac" className="texto-formulario">
                     * Fecha Nacimiento
                   </label>
                   <input
@@ -86,11 +89,11 @@ function CrearCliente() {
                     required
                     className="form-control"
                     onChange={inputs}
-                    value={from.fechaNac}
+                    value={form.fechaNac}
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="email" className="texto-formulario">
+                  <label for="email" className="texto-formulario">
                     * Email
                   </label>
                   <input
@@ -100,7 +103,7 @@ function CrearCliente() {
                     className="form-control"
                     autocomplete="on"
                     onChange={inputs}
-                    value={from.email}
+                    value={form.email}
                   />
                 </div>
               </fieldset>
@@ -110,7 +113,7 @@ function CrearCliente() {
             <form className="registroCliente">
               <fieldset className="right-form">
                 <div className="form-group">
-                  <label htmlFor="tipoDocumento" className="texto-formulario">
+                  <label for="tipoDocumento" className="texto-formulario">
                     * Seleccione
                   </label>
                   <select
@@ -129,7 +132,7 @@ function CrearCliente() {
                   </select>
                 </div>
                 <div className="form-group">
-                  <label htmlFor="numeroDocumento" className="texto-formulario">
+                  <label for="numeroDocumento" className="texto-formulario">
                     * Documento
                   </label>
                   <input
@@ -138,11 +141,11 @@ function CrearCliente() {
                     name="numero-documento"
                     className="form-control"
                     onChange={inputs}
-                    value={from.numeroDocumento}
+                    value={form.numeroDocumento}
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="numeroCelular" className="texto-formulario">
+                  <label for="numeroCelular" className="texto-formulario">
                     * Celular
                   </label>
                   <input
@@ -152,11 +155,11 @@ function CrearCliente() {
                     name="numero-celular"
                     className="form-control"
                     onChange={inputs}
-                    value={from.numeroCelular}
+                    value={form.numeroCelular}
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="cod-reserva" className="texto-formulario">
+                  <label for="cod-reserva" className="texto-formulario">
                     Código reserva
                   </label>
                   <input
@@ -166,7 +169,7 @@ function CrearCliente() {
                     name="cod-reserva"
                     className="form-control"
                     onChange={inputs}
-                    value={from.codReserva}
+                    value={form.codReserva}
                   />
                 </div>
               </fieldset>
