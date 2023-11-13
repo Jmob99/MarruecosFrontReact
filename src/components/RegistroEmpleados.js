@@ -19,18 +19,48 @@ function RegistroEmpleados() {
     setForm({
       ...form,
       [e.target.name]: isChecked,
+      
     });
 
     setPassword(isChecked);
   };
+
+  const registrar = (e) => {
+    const nomUsuario = form.usuario;
+    
+    if (!nomUsuario) {
+      alert("El campo nombre de usuario no puede estar vacío");
+      e.preventDefault();
+      return;
+    } 
+    const valorEmail = form.email;
+
+    if (!valorEmail) {
+      alert("El campo email no puede estar vacio");
+      e.preventDefault();
+      return;
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valorEmail)) {
+      alert("Email invalido");
+      e.preventDefault();
+      return;
+    }
+
+    const valorPassword = form.password;
+
+    if (!valorPassword || valorPassword.length < 8) {
+      alert("Debe ingresar minimo 8 caracteres")
+      e.preventDefault();
+      return;
+    }
+  }
   return (
     <div>
       <Logo />
       <Titulo name={"Registro de Empleados"} />
       <section className="container">
-        <form className="form-registroEmpleado">
+        <form className="form-registroEmpleado" onSubmit={registrar}>
           <div className="form-group">
-            <label htmlhtmlFor="usuario" id="label-usuario">
+            <label htmlFor="usuario" id="label-usuario">
               Nombre de usuario
             </label>
             <input
@@ -43,7 +73,7 @@ function RegistroEmpleados() {
             />
           </div>
           <div className="form-group">
-            <label htmlhtmlFor="email" id="label-email">
+            <label htmlFor="email" id="label-email">
               Email
             </label>
             <input
@@ -56,14 +86,14 @@ function RegistroEmpleados() {
             />
           </div>
           <div className="form-group">
-            <label htmlhtmlFor="password" id="label-password">
+            <label htmlFor="password" id="label-password">
               Contraseña
             </label>
             <input
               type={password ? "text" : "password"}
               id="password"
               className="form-control mb-3"
-              name="contraseña"
+              name="password"
               onChange={inputs}
               value={form.password}
             />
