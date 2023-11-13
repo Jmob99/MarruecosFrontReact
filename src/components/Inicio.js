@@ -19,8 +19,8 @@ function Inicio() {
       <Link to="/cliente" style={linkStyles}>
         <BtnOpciones name={"Crear Cliente"} />
       </Link>
-      <Link to="/" style={linkStyles}>
-        <BtnOpciones name={"name"} />
+      <Link to="/datos" style={linkStyles}>
+        <BtnOpciones name={"Registro Datos"} />
       </Link>
     </div>
   );

@@ -73,9 +73,7 @@ function CrearCliente() {
                     id="apellido"
                     name="apellido-cliente"
                     className="form-control"
-                    onChange={inputs}
-                    value={from.apellido}
-                  />
+                                      />
                 </div>
                 <div className="form-group">
                   <label htmlFor="fechaNac" className="texto-formulario">
