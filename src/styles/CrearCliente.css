@@ -16,12 +16,12 @@
   flex-direction: column;
 }
 
-.consultaCliente {
+.consultaCliente-R {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  top: 60px;
+  margin-bottom: 3rem;
+  margin-top: 3rem;
 }
 
 label {
@@ -38,18 +38,10 @@ label {
   font-weight: bold;
 }
 
-
-.container-btn {
-  display: flex;
-  position: relative;
-  top: 11px;
-  right: 30px;
-}
-
-#btnBuscar {
+#btnBuscarR {
   cursor: pointer;
-  margin-top: 6px;
-  margin-left: 50px;
+  margin-top: 2rem;
+  margin-left: 0.5rem;
   font-size: medium;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   border: 10px;
@@ -64,11 +56,9 @@ label {
 
 /* Formulario registro de cliente */
 
-.registroCliente {
+.registroCliente-R {
   display: flex;
   flex-direction: row;
-  position: relative;
-  top: 160px;
   justify-content: center;
   align-items: center;
 }
@@ -115,7 +105,7 @@ option {
 /* Botones de registro de clientes */
 
 .container-botones {
-  margin-top: 13rem;
+  margin-top: 3rem;
 }
 
 #btnEliminar {
@@ -146,7 +136,7 @@ option {
   height: 40px;
 }
 
-#btnCrear {
+#btnCrearR {
   cursor: pointer;
   font-size: medium;
   font-family: "Fira Sans", sans-serif;
