@@ -73,16 +73,17 @@ function RegistroEmpleados() {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="email" id="label-email">
+            <label htmlFor="email2" id="label-email">
               Email
             </label>
             <input
               type="email"
-              id="email"
+              id="email2"
               name="email"
               className="form-control mb-3"
               onChange={inputs}
               value={form.email}
+              autoComplete="email"
             />
           </div>
           <div className="form-group">
@@ -106,7 +107,7 @@ function RegistroEmpleados() {
               name="checkbox"
               onChange={checks}
             />
-            <label id="label" className="checkLabel">
+            <label id="label" className="checkLabel" htmlFor="checkbox">
               Mostrar contraseña
             </label>
           </div>

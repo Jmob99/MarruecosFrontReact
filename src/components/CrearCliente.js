@@ -27,12 +27,12 @@ function CrearCliente() {
         </p>
       </aside>
 
-      <form className="consultaCliente">
+      <form className="consultaCliente-R">
         <div className="inputCliente">
-          <label for="formCliente">Ingrese documento</label>
+          <label htmlFor="formCliente">Ingrese documento</label>
           <input
             type="text"
-            maxlength="15"
+            maxLength="15"
             name="cliente"
             id="formCliente"
             onChange={inputs}
@@ -41,7 +41,7 @@ function CrearCliente() {
         </div>
 
         <div className="container-btn">
-          <button type="submit" id="btnBuscar">
+          <button type="submit" id="btnBuscarR">
             Buscar
           </button>
         </div>
@@ -49,10 +49,10 @@ function CrearCliente() {
       <div className="container">
         <div className="row">
           <div className="col-md-6">
-            <form className="registroCliente">
+            <form className="registroCliente-R">
               <fieldset className="left-form">
                 <div className="form-group">
-                  <label for="nombre" className="texto-formulario">
+                  <label htmlFor="nombre" className="texto-formulario">
                     * Nombre
                   </label>
                   <input
@@ -65,7 +65,7 @@ function CrearCliente() {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="apellido" className="texto-formulario">
+                  <label htmlFor="apellido" className="texto-formulario">
                     * Apellido
                   </label>
                   <input
@@ -79,7 +79,7 @@ function CrearCliente() {
 
                 </div>
                 <div className="form-group">
-                  <label for="fechaNac" className="texto-formulario">
+                  <label htmlFor="fechaNac" className="texto-formulario">
                     * Fecha Nacimiento
                   </label>
                   <input
@@ -93,7 +93,7 @@ function CrearCliente() {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="email" className="texto-formulario">
+                  <label htmlFor="email" className="texto-formulario">
                     * Email
                   </label>
                   <input
@@ -101,7 +101,7 @@ function CrearCliente() {
                     id="email"
                     name="correo"
                     className="form-control"
-                    autocomplete="on"
+                    autoComplete="on"
                     onChange={inputs}
                     value={form.email}
                   />
@@ -113,7 +113,7 @@ function CrearCliente() {
             <form className="registroCliente">
               <fieldset className="right-form">
                 <div className="form-group">
-                  <label for="tipoDocumento" className="texto-formulario">
+                  <label htmlFor="tipoDocumento" className="texto-formulario">
                     * Seleccione
                   </label>
                   <select
@@ -132,7 +132,7 @@ function CrearCliente() {
                   </select>
                 </div>
                 <div className="form-group">
-                  <label for="numeroDocumento" className="texto-formulario">
+                  <label htmlFor="numeroDocumento" className="texto-formulario">
                     * Documento
                   </label>
                   <input
@@ -145,12 +145,12 @@ function CrearCliente() {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="numeroCelular" className="texto-formulario">
+                  <label htmlFor="numeroCelular" className="texto-formulario">
                     * Celular
                   </label>
                   <input
                     type="tel"
-                    maxlength="10"
+                    maxLength="10"
                     id="numeroCelular"
                     name="numero-celular"
                     className="form-control"
@@ -159,12 +159,12 @@ function CrearCliente() {
                   />
                 </div>
                 <div className="form-group">
-                  <label for="cod-reserva" className="texto-formulario">
+                  <label htmlFor="codReserva" className="texto-formulario">
                     Código reserva
                   </label>
                   <input
                     type="tel"
-                    maxlength="10"
+                    maxLength="10"
                     id="codReserva"
                     name="cod-reserva"
                     className="form-control"
@@ -177,24 +177,24 @@ function CrearCliente() {
           </div>
         </div>
       </div>
-      <section class="container-botones text-center row">
-        <div class="col-md-4 mb-4">
+      <section className="container-botones text-center row">
+        <div className="col-md-4 mb-4">
           <button type="submit" id="btnEliminar">
             Eliminar
           </button>
         </div>
-        <div class="col-md-4 mb-4">
+        <div className="col-md-4 mb-4">
           <button type="submit" id="btnModificar">
             Modificar
           </button>
         </div>
-        <div class="col-md-4 mb-4">
-          <button type="submit" id="btnCrear">
+        <div className="col-md-4 mb-4">
+          <button type="submit" id="btnCrearR">
             Crear
           </button>
         </div>
       </section>
-      <section class=" container d-flex justify-content-center align-items-center">
+      <section className=" container d-flex justify-content-center align-items-center">
         <Link to="/">
           <button type="submit" id="btnMenuPrincipal">
             Menu Principal
