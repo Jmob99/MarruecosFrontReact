@@ -16,6 +16,149 @@ function CrearCliente() {
   const [tipoDocumentoSeleccionado, setTipoDocumentoSeleccionado] =
     useState("selectDocumento");
 
+  const validarBusqueda = (e) => {
+    // Verificar si el campo de búsqueda está vacío
+    if (!form.cliente) {
+      alert("El campo de búsqueda no puede estar vacío");
+      e.preventDefault();
+      document.getElementById("formCliente").focus();
+      return;
+    } else if (!/^\d+$/.test(form.cliente)) {
+      alert("ingrese solo numeros");
+      e.preventDefault();
+      document.getElementById("formCliente").focus();
+      document.getElementById("formCliente").value = "";
+      return;
+    }
+  };
+
+  //validar el campo nombre y apellido
+  const crear = (e) => {
+    const nombre = document.getElementById("nombre").value || "";
+    if (nombre === "") {
+      alert("El campo Nombre no puede estar vacío");
+      e.preventDefault();
+      document.getElementById("nombre").focus();
+      return;
+    }
+
+    const sololetras = /^[a-zA-Záéíóúüñ]+$/;
+
+    if (!sololetras.test(nombre)) {
+      alert("Solo se pueden ingresar letras en el campo Nombre");
+      e.preventDefault();
+      document.getElementById("nombre").focus();
+      document.getElementById("nombre").value = "";
+      return;
+    }
+
+    const apellido = document.getElementById("apellido").value || "";
+
+    if (apellido === "") {
+      alert("El campo Apellido no puede estar vacío");
+      e.preventDefault();
+      document.getElementById("apellido").focus();
+      return;
+    }
+
+    if (!sololetras.test(apellido)) {
+      alert("Solo se pueden ingresar letras en el campo Apellido");
+      e.preventDefault();
+      document.getElementById("apellido").focus();
+      document.getElementById("apellido").value = "";
+      return;
+    }
+
+    const fechanaci = document.getElementById("fechaNac").value || "";
+
+    if (fechanaci === "") {
+      alert("ingrese su fecha de nacimiento");
+      e.preventDefault();
+      document.getElementById("fechaNac").focus();
+      return;
+    }
+
+    const fechaNacimiento = new Date(fechanaci);
+    const fechaHoy = new Date();
+    const diferenciaEdad =
+      fechaHoy.getFullYear() - fechaNacimiento.getFullYear();
+
+    if (diferenciaEdad < 18) {
+      alert("El cliente es menor de edad, no se puede registrar");
+      document.getElementById("fechaNac").focus();
+      document.getElementById("fechaNac").value = "";
+      e.preventDefault();
+      return;
+    }
+
+    const campemail = document.getElementById("email").value || "";
+
+    if (campemail === "") {
+      alert("El campo email no puede estar vacio");
+      document.getElementById("email").focus();
+      e.preventDefault();
+      return;
+    }
+
+    const valiemail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!valiemail.test(campemail)) {
+      alert("Email invalido");
+      document.getElementById("email").focus();
+      document.getElementById("email").value = "";
+      e.preventDefault();
+      return;
+    }
+
+    const tipoDocumento = tipoDocumentoSeleccionado;
+    if (tipoDocumento === "selectDocumento") {
+      alert("Debe seleccionar un tipo de documento");
+      document.getElementById("tipoDocumento").focus();
+      e.preventDefault();
+      return;
+    }
+
+    const valiDocumento =
+      document.getElementById("numeroDocumento").value || "";
+
+    if (valiDocumento === "") {
+      alert("El campo Documento no puede estar vacio");
+      document.getElementById("numeroDocumento").focus();
+      e.preventDefault();
+      return;
+    }
+
+    if (isNaN(valiDocumento)) {
+      alert("ingrese solo numeros su Numero de Documento");
+      document.getElementById("numeroDocumento").focus();
+      document.getElementById("numeroDocumento").value = "";
+      e.preventDefault();
+      return;
+    }
+
+    const valiCelular = document.getElementById("numeroCelular").value || "";
+
+    if (valiCelular === "") {
+      alert("El campo Celular no puede estar vacio");
+      document.getElementById("numeroCelular").focus();
+      e.preventDefault();
+      return;
+    }
+
+    if (isNaN(valiCelular) || valiCelular.length < 10) {
+      if (isNaN(valiCelular)) {
+        alert("Solo se puede ingresar números en el Número de Celular");
+      } else {
+        alert("Número de Celular inválido. Debe tener al menos 10 dígitos.");
+      }
+
+      document.getElementById("numeroCelular").focus();
+      document.getElementById("numeroCelular").value = "";
+      e.preventDefault();
+      return;
+    }
+  };
+
   return (
     <div>
       <Logo />
@@ -41,7 +184,7 @@ function CrearCliente() {
         </div>
 
         <div className="container-btn">
-          <button type="submit" id="btnBuscarR">
+          <button type="submit" id="btnBuscarR" onClick={validarBusqueda}>
             Buscar
           </button>
         </div>
@@ -76,7 +219,6 @@ function CrearCliente() {
                     onChange={inputs}
                     value={form.apellido}
                   />
-
                 </div>
                 <div className="form-group">
                   <label htmlFor="fechaNac" className="texto-formulario">
@@ -189,7 +331,7 @@ function CrearCliente() {
           </button>
         </div>
         <div className="col-md-4 mb-4">
-          <button type="submit" id="btnCrearR">
+          <button type="submit" id="btnCrearR" onClick={crear}>
             Crear
           </button>
         </div>
