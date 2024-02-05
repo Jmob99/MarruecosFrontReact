@@ -58,7 +58,7 @@ function RegistroEmpleados() {
       <Logo />
       <Titulo name={"Registro de Empleados"} />
       <section className="container">
-        <form className="form-registroEmpleado" onSubmit={registrar}>
+        <form className="form-registroEmpleado">
           <div className="form-group">
             <label htmlFor="usuario" id="label-usuario">
               Nombre de usuario
@@ -118,7 +118,7 @@ function RegistroEmpleados() {
               </button>
             </Link>
 
-            <button type="submit" id="btn-registro">
+            <button type="submit" id="btn-registro" onClick={registrar}>
               Registrar
             </button>
           </div>
