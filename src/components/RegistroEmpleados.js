@@ -19,7 +19,6 @@ function RegistroEmpleados() {
     setForm({
       ...form,
       [e.target.name]: isChecked,
-      
     });
 
     setPassword(isChecked);
@@ -27,32 +26,43 @@ function RegistroEmpleados() {
 
   const registrar = (e) => {
     const nomUsuario = form.usuario;
-    
+
     if (!nomUsuario) {
       alert("El campo nombre de usuario no puede estar vacío");
       e.preventDefault();
+      document.getElementById("usuario").focus();
       return;
-    } 
+    } else if (!/^\d+$/.test(nomUsuario)) {
+      alert("Ingrese solo numeros (Su numero de documento)");
+      e.preventDefault();
+      document.getElementById("usuario").focus();
+      document.getElementById("usuario").value = "";
+      return;
+    }
     const valorEmail = form.email;
 
     if (!valorEmail) {
       alert("El campo email no puede estar vacio");
       e.preventDefault();
+      document.getElementById("email2").focus();
       return;
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(valorEmail)) {
       alert("Email invalido");
       e.preventDefault();
+      document.getElementById("email2").focus();
+      document.getElementById("email2").value = "";
       return;
     }
-
     const valorPassword = form.password;
 
     if (!valorPassword || valorPassword.length < 8) {
-      alert("Debe ingresar minimo 8 caracteres")
+      alert("Debe ingresar minimo 8 caracteres");
       e.preventDefault();
+      document.getElementById("password").focus();
+
       return;
     }
-  }
+  };
   return (
     <div>
       <Logo />
