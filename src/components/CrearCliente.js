@@ -6,6 +6,8 @@ import { Link } from "react-router-dom";
 
 function CrearCliente() {
   const [form, setForm] = useState({});
+  
+  const [tipoDocumentoSeleccionado, setTipoDocumentoSeleccionado] = useState("selectDocumento");
 
   const inputs = (e) => {
     setForm({
@@ -13,8 +15,6 @@ function CrearCliente() {
       [e.target.name]: e.target.value,
     });
   };
-  const [tipoDocumentoSeleccionado, setTipoDocumentoSeleccionado] =
-    useState("selectDocumento");
 
   const validarBusqueda = (e) => {
     // Verificar si el campo de búsqueda está vacío
