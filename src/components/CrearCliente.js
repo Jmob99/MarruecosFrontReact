@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "../styles/CrearCliente.css";
 import { Titulo } from "./Titulo";
 import { Logo } from "./Logo";
@@ -7,158 +7,93 @@ import { Link } from "react-router-dom";
 function CrearCliente() {
   const [form, setForm] = useState({});
 
+  const [tipoDocumentoSeleccionado, setTipoDocumentoSeleccionado] = useState("selectDocumento");
+
   const inputs = (e) => {
     setForm({
       ...form,
       [e.target.name]: e.target.value,
     });
   };
-  const [tipoDocumentoSeleccionado, setTipoDocumentoSeleccionado] =
-    useState("selectDocumento");
 
-  const validarBusqueda = (e) => {
-    // Verificar si el campo de búsqueda está vacío
-    if (!form.cliente) {
-      alert("El campo de búsqueda no puede estar vacío");
-      e.preventDefault();
-      document.getElementById("formCliente").focus();
-      return;
-    } else if (!/^\d+$/.test(form.cliente)) {
-      alert("ingrese solo numeros");
-      e.preventDefault();
-      document.getElementById("formCliente").focus();
-      document.getElementById("formCliente").value = "";
-      return;
-    }
-  };
+ 
 
-  //validar el campo nombre y apellido
-  const crear = (e) => {
-    const nombre = document.getElementById("nombre").value || "";
-    if (nombre === "") {
-      alert("El campo Nombre no puede estar vacío");
-      e.preventDefault();
-      document.getElementById("nombre").focus();
-      return;
-    }
-
-    const sololetras = /^[a-zA-Záéíóúüñ]+$/;
-
-    if (!sololetras.test(nombre)) {
-      alert("Solo se pueden ingresar letras en el campo Nombre");
-      e.preventDefault();
-      document.getElementById("nombre").focus();
-      document.getElementById("nombre").value = "";
-      return;
-    }
-
-    const apellido = document.getElementById("apellido").value || "";
-
-    if (apellido === "") {
-      alert("El campo Apellido no puede estar vacío");
-      e.preventDefault();
-      document.getElementById("apellido").focus();
-      return;
-    }
-
-    if (!sololetras.test(apellido)) {
-      alert("Solo se pueden ingresar letras en el campo Apellido");
-      e.preventDefault();
-      document.getElementById("apellido").focus();
-      document.getElementById("apellido").value = "";
-      return;
-    }
-
-    const fechanaci = document.getElementById("fechaNac").value || "";
-
-    if (fechanaci === "") {
-      alert("ingrese su fecha de nacimiento");
-      e.preventDefault();
-      document.getElementById("fechaNac").focus();
-      return;
-    }
-
-    const fechaNacimiento = new Date(fechanaci);
-    const fechaHoy = new Date();
-    const diferenciaEdad =
-      fechaHoy.getFullYear() - fechaNacimiento.getFullYear();
-
-    if (diferenciaEdad < 18) {
-      alert("El cliente es menor de edad, no se puede registrar");
-      document.getElementById("fechaNac").focus();
-      document.getElementById("fechaNac").value = "";
-      e.preventDefault();
-      return;
-    }
-
-    const campemail = document.getElementById("email").value || "";
-
-    if (campemail === "") {
-      alert("El campo email no puede estar vacio");
-      document.getElementById("email").focus();
-      e.preventDefault();
-      return;
-    }
-
-    const valiemail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!valiemail.test(campemail)) {
-      alert("Email invalido");
-      document.getElementById("email").focus();
-      document.getElementById("email").value = "";
-      e.preventDefault();
-      return;
-    }
-
-    const tipoDocumento = tipoDocumentoSeleccionado;
-    if (tipoDocumento === "selectDocumento") {
-      alert("Debe seleccionar un tipo de documento");
-      document.getElementById("tipoDocumento").focus();
-      e.preventDefault();
-      return;
-    }
-
-    const valiDocumento =
-      document.getElementById("numeroDocumento").value || "";
-
-    if (valiDocumento === "") {
-      alert("El campo Documento no puede estar vacio");
-      document.getElementById("numeroDocumento").focus();
-      e.preventDefault();
-      return;
-    }
-
-    if (isNaN(valiDocumento)) {
-      alert("ingrese solo numeros su Numero de Documento");
-      document.getElementById("numeroDocumento").focus();
-      document.getElementById("numeroDocumento").value = "";
-      e.preventDefault();
-      return;
-    }
-
-    const valiCelular = document.getElementById("numeroCelular").value || "";
-
-    if (valiCelular === "") {
-      alert("El campo Celular no puede estar vacio");
-      document.getElementById("numeroCelular").focus();
-      e.preventDefault();
-      return;
-    }
-
-    if (isNaN(valiCelular) || valiCelular.length < 10) {
-      if (isNaN(valiCelular)) {
-        alert("Solo se puede ingresar números en el Número de Celular");
-      } else {
-        alert("Número de Celular inválido. Debe tener al menos 10 dígitos.");
+  const creacionCliente = () => {
+   
+    fetch('http://localhost/API/index.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(form) 
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al crear cliente');
       }
-
-      document.getElementById("numeroCelular").focus();
-      document.getElementById("numeroCelular").value = "";
-      e.preventDefault();
-      return;
-    }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Cliente creado:', data);
+      alert('Cliente creado exitosamente')
+    })
+    .catch(error => {
+      console.error('Error al crear cliente:', error);
+    });
   };
 
+  const obtenerCliente = () =>{
+    fetch(`http://localhost/API/index.php?id_cliente=${form.numero_cedula}`)
+    .then((response) => response.json())
+    .then((data) => setForm(data))
+    .catch((error) => console.error('Error obteniendo cliente:', error));
+  }
+  
+  const actualizarCliente = () => {
+    fetch(`http://localhost/API/index.php?id_cliente=${form.id_cliente}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(form)
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al actualizar cliente');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Cliente actualizado:', data);
+      alert('El cliente ha sido actualizado exitosamente');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+  const eliminarCliente = () => {
+    fetch(`http://localhost/API/index.php?id_cliente=${form.id_cliente}`, {
+      method: 'DELETE'
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Error al eliminar cliente');
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Cliente eliminado:', data);
+      alert('El cliente ha sido eliminado exitosamente');
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  };
+  useEffect(() => {
+    fetch('http://localhost/API/index.php')
+    .then((response) => response.json())
+    .then((data) => setForm(data))
+  }, [])
   return (
     <div>
       <Logo />
@@ -184,7 +119,7 @@ function CrearCliente() {
         </div>
 
         <div className="container-btn">
-          <button type="submit" id="btnBuscarR" onClick={validarBusqueda}>
+          <button type="submit" id="btnBuscarR" onClick={obtenerCliente}>
             Buscar
           </button>
         </div>
@@ -321,17 +256,17 @@ function CrearCliente() {
       </div>
       <section className="container-botones text-center row">
         <div className="col-md-4 mb-4">
-          <button type="submit" id="btnEliminar">
+          <button type="submit" id="btnEliminar" onClick={eliminarCliente}>
             Eliminar
           </button>
         </div>
         <div className="col-md-4 mb-4">
-          <button type="submit" id="btnModificar">
+          <button type="submit" id="btnModificar" onClick={actualizarCliente}>
             Modificar
           </button>
         </div>
         <div className="col-md-4 mb-4">
-          <button type="submit" id="btnCrearR" onClick={crear}>
+          <button type="submit" id="btnCrearR" onClick={creacionCliente}>
             Crear
           </button>
         </div>
