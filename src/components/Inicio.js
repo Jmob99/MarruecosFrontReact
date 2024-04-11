@@ -12,15 +12,9 @@ function Inicio() {
   return (
     <div>
       <Logo />
-      <Titulo name={"Inicio"} />
-      <Link to="/empleados" style={linkStyles}>
-        <BtnOpciones name={"Registro de empleados"} />
-      </Link>
+      <Titulo name={"Inicio"} /> 
       <Link to="/cliente" style={linkStyles}>
         <BtnOpciones name={"Crear Cliente"} />
-      </Link>
-      <Link to="/datos" style={linkStyles}>
-        <BtnOpciones name={"Registro Datos"} />
       </Link>
     </div>
   );
