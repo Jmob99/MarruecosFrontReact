@@ -36,14 +36,16 @@ function CrearCliente() {
     .then(data => {
       console.log('Cliente creado:', data);
       alert('Cliente creado exitosamente')
+      setForm({})
     })
     .catch(error => {
       console.error('Error al crear cliente:', error);
+
     });
   };
 
   const obtenerCliente = () =>{
-    fetch(`http://localhost/API/index.php?id_cliente=${form.numero_cedula}`)
+    fetch(`http://localhost/API/index.php?numero_cedula=${form.numero_cedula}`)
     .then((response) => response.json())
     .then((data) => setForm(data))
     .catch((error) => console.error('Error obteniendo cliente:', error));
@@ -90,6 +92,7 @@ function CrearCliente() {
     });
   };
   useEffect(() => {
+    
     fetch('http://localhost/API/index.php')
     .then((response) => response.json())
     .then((data) => setForm(data))
