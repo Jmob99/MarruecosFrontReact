@@ -53,14 +53,14 @@ function CrearCliente() {
 
   const obtenerCliente = (event) => {
     event.preventDefault();
-    console.log(form);
     fetch(`http://localhost:80/API/?numero_documento=${form.cliente}`)
       .then((response) => response.json())
       .then((data) => {
         if (!data) {
           alert('No se ha encontrado un cliente con la identificación suministrada')
+          setForm({});
+          setTipoDocumentoSeleccionado("selectDocumento")
         }
-        console.log(data);
         setForm(data);
         setTipoDocumentoSeleccionado(data.id_tipo_documento);
       })
