@@ -18,7 +18,6 @@ function CrearCliente() {
     useState("selectDocumento");
 
   const inputs = (e) => {
-    console.log(e);
     setForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -31,7 +30,10 @@ function CrearCliente() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(form),
+      body: JSON.stringify({
+        ...form,
+        id_tipo_documento: tipoDocumentoSeleccionado
+      }),
     })
       .then((response) => {
         if (!response.ok) {
@@ -55,7 +57,7 @@ function CrearCliente() {
     fetch(`http://localhost:80/API/?numero_documento=${form.cliente}`)
       .then((response) => response.json())
       .then((data) => {
-        if(!data){
+        if (!data) {
           alert('No se ha encontrado un cliente con la identificación suministrada')
         }
         console.log(data);
@@ -201,16 +203,17 @@ function CrearCliente() {
             <form className="registroCliente">
               <fieldset className="right-form">
                 <div className="form-group">
-                  <label htmlFor="tipoDocumento" className="texto-formulario">
+                  <label htmlFor="id_tipo_documento" className="texto-formulario">
                     * Seleccione
                   </label>
                   <select
-                    name="tipo-documento"
-                    id="tipoDocumento"
+                    name="id_tipo_documento"
+                    id="id_tipo_documento"
                     className="form-select"
                     value={tipoDocumentoSeleccionado}
                     onChange={(e) =>
                       setTipoDocumentoSeleccionado(e.target.value)
+
                     }
                   >
                     <option value="selectDocumento">Tipo de documento</option>
