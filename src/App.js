@@ -1,13 +1,13 @@
-
 import { Route, Routes } from "react-router-dom";
-import { Inicio } from "./components/Inicio";
+
 import { CrearCliente } from "./components/CrearCliente";
+import { Login } from "./components/login";
 
 function App() {
   return (
     <div>
       <Routes>
-        <Route path="/" element={<Inicio />} />
+        <Route path="/" element={<Login />} />
         <Route path="/cliente" element={<CrearCliente />} />
       </Routes>
     </div>
