@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "../styles/CrearCliente.css";
 import { Titulo } from "./Titulo";
 import { Logo } from "./Logo";
 import { Link } from "react-router-dom";
 
 function CrearCliente() {
-  const [form, setForm] = useState({});
+  const [form, setForm] = useState({
+    nombre: "",
+    apellido: "",
+    direccion: "",
+    correo_electronico: "",
+    numero_documento: "",
+    telefono: "",
+  });
 
-  const [tipoDocumentoSeleccionado, setTipoDocumentoSeleccionado] = useState("selectDocumento");
+  const [tipoDocumentoSeleccionado, setTipoDocumentoSeleccionado] =
+    useState("selectDocumento");
 
   const inputs = (e) => {
     setForm({
@@ -16,84 +24,89 @@ function CrearCliente() {
     });
   };
 
- 
-
   const creacionCliente = () => {
-   
-    fetch('http://localhost/API/index.php', {
-      method: 'POST',
+    fetch("http://localhost:80/API/index.php", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(form) 
+      body: JSON.stringify({
+        ...form,
+        id_tipo_documento: tipoDocumentoSeleccionado
+      }),
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error al crear cliente');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Cliente creado:', data);
-      alert('Cliente creado exitosamente')
-    })
-    .catch(error => {
-      console.error('Error al crear cliente:', error);
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error al crear cliente");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Cliente creado:", data);
+        alert("Cliente creado exitosamente");
+        setForm({});
+      })
+      .catch((error) => {
+        console.error("Error al crear cliente:", error);
+      });
   };
 
-  const obtenerCliente = () =>{
-    fetch(`http://localhost/API/index.php?id_cliente=${form.numero_cedula}`)
-    .then((response) => response.json())
-    .then((data) => setForm(data))
-    .catch((error) => console.error('Error obteniendo cliente:', error));
-  }
-  
+  const obtenerCliente = (event) => {
+    event.preventDefault();
+    console.log(form);
+    fetch(`http://localhost:80/API/?numero_documento=${form.cliente}`)
+      .then((response) => response.json())
+      .then((data) => {
+        if (!data) {
+          alert('No se ha encontrado un cliente con la identificación suministrada')
+        }
+        console.log(data);
+        setForm(data);
+        setTipoDocumentoSeleccionado(data.id_tipo_documento);
+      })
+      .catch((error) => console.error("Error obteniendo cliente:", error));
+  };
+
   const actualizarCliente = () => {
-    fetch(`http://localhost/API/index.php?id_cliente=${form.id_cliente}`, {
-      method: 'PUT',
+    fetch(`http://localhost:80/API/index.php?id_cliente=${form.id_cliente}`, {
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(form)
+      body: JSON.stringify(form),
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error al actualizar cliente');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Cliente actualizado:', data);
-      alert('El cliente ha sido actualizado exitosamente');
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
-  }
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error al actualizar cliente");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Cliente actualizado:", data);
+        alert("El cliente ha sido actualizado exitosamente");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
   const eliminarCliente = () => {
     fetch(`http://localhost/API/index.php?id_cliente=${form.id_cliente}`, {
-      method: 'DELETE'
+      method: "DELETE",
     })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error('Error al eliminar cliente');
-      }
-      return response.json();
-    })
-    .then(data => {
-      console.log('Cliente eliminado:', data);
-      alert('El cliente ha sido eliminado exitosamente');
-    })
-    .catch(error => {
-      console.error('Error:', error);
-    });
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Error al eliminar cliente");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("Cliente eliminado:", data);
+        alert("El cliente ha sido eliminado exitosamente");
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
-  useEffect(() => {
-    fetch('http://localhost/API/index.php')
-    .then((response) => response.json())
-    .then((data) => setForm(data))
-  }, [])
   return (
     <div>
       <Logo />
@@ -136,7 +149,7 @@ function CrearCliente() {
                   <input
                     type="text"
                     id="nombre"
-                    name="nombre-cliente"
+                    name="nombre"
                     className="form-control"
                     onChange={inputs}
                     value={form.nombre}
@@ -149,24 +162,24 @@ function CrearCliente() {
                   <input
                     type="text"
                     id="apellido"
-                    name="apellido-cliente"
+                    name="apellido"
                     className="form-control"
                     onChange={inputs}
                     value={form.apellido}
                   />
                 </div>
                 <div className="form-group">
-                  <label htmlFor="fechaNac" className="texto-formulario">
-                    * Fecha Nacimiento
+                  <label htmlFor="direccion" className="texto-formulario">
+                    * Dirección
                   </label>
                   <input
-                    type="date"
-                    id="fechaNac"
-                    name="fecha-nacimiento"
+                    type="text"
+                    id="direccion"
+                    name="direccion"
                     required
                     className="form-control"
                     onChange={inputs}
-                    value={form.fechaNac}
+                    value={form.direccion}
                   />
                 </div>
                 <div className="form-group">
@@ -176,11 +189,11 @@ function CrearCliente() {
                   <input
                     type="email"
                     id="email"
-                    name="correo"
+                    name="correo_electronico"
                     className="form-control"
                     autoComplete="on"
                     onChange={inputs}
-                    value={form.email}
+                    value={form.correo_electronico}
                   />
                 </div>
               </fieldset>
@@ -190,22 +203,23 @@ function CrearCliente() {
             <form className="registroCliente">
               <fieldset className="right-form">
                 <div className="form-group">
-                  <label htmlFor="tipoDocumento" className="texto-formulario">
+                  <label htmlFor="id_tipo_documento" className="texto-formulario">
                     * Seleccione
                   </label>
                   <select
-                    name="tipo-documento"
-                    id="tipoDocumento"
+                    name="id_tipo_documento"
+                    id="id_tipo_documento"
                     className="form-select"
                     value={tipoDocumentoSeleccionado}
                     onChange={(e) =>
                       setTipoDocumentoSeleccionado(e.target.value)
+
                     }
                   >
                     <option value="selectDocumento">Tipo de documento</option>
-                    <option value="Cedula">CC</option>
-                    <option value="Pasaporte">PS</option>
-                    <option value="Cedula Extranjeria">CE</option>
+                    <option value="1">Cédula de Ciudadanía</option>
+                    <option value="2">Pasaporte</option>
+                    <option value="3">Cédula de Extranjería</option>
                   </select>
                 </div>
                 <div className="form-group">
@@ -215,10 +229,10 @@ function CrearCliente() {
                   <input
                     type="text"
                     id="numeroDocumento"
-                    name="numero-documento"
+                    name="numero_documento"
                     className="form-control"
                     onChange={inputs}
-                    value={form.numeroDocumento}
+                    value={form.numero_documento}
                   />
                 </div>
                 <div className="form-group">
@@ -229,10 +243,10 @@ function CrearCliente() {
                     type="tel"
                     maxLength="10"
                     id="numeroCelular"
-                    name="numero-celular"
+                    name="telefono"
                     className="form-control"
                     onChange={inputs}
-                    value={form.numeroCelular}
+                    value={form.telefono}
                   />
                 </div>
                 <div className="form-group">
@@ -243,7 +257,7 @@ function CrearCliente() {
                     type="tel"
                     maxLength="10"
                     id="codReserva"
-                    name="cod-reserva"
+                    name="codReserva"
                     className="form-control"
                     onChange={inputs}
                     value={form.codReserva}
