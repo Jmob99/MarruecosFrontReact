@@ -45,6 +45,7 @@ function CrearCliente() {
         console.log("Cliente creado:", data);
         alert("Cliente creado exitosamente");
         setForm({});
+        setTipoDocumentoSeleccionado("selectDocumento")
       })
       .catch((error) => {
         console.error("Error al crear cliente:", error);
@@ -84,6 +85,8 @@ function CrearCliente() {
       .then((data) => {
         console.log("Cliente actualizado:", data);
         alert("El cliente ha sido actualizado exitosamente");
+        setForm({});
+        setTipoDocumentoSeleccionado("selectDocumento")
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -102,6 +105,8 @@ function CrearCliente() {
       .then((data) => {
         console.log("Cliente eliminado:", data);
         alert("El cliente ha sido eliminado exitosamente");
+        setForm({});
+        setTipoDocumentoSeleccionado("selectDocumento")
       })
       .catch((error) => {
         console.error("Error:", error);
