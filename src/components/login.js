@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
 import { Titulo } from "./Titulo";
 import { Logo } from "./Logo";
-import { Link } from "react-router-dom";
 import "../styles/login.css";
 
 import {
@@ -114,11 +113,13 @@ function Login() {
   };
 
   if (ingresoExitoso) {
-    return <Navigate to="/cliente" />;
+    return <Navigate to="/Inicio" />;
   }
   return (
     <div>
-      <Logo />
+      <div className="logo-container">
+        <Logo />
+      </div>
       <Titulo name={"Inicio Sesion"} />
       <nav className="container-navR">
         <ul className="container-lista">
@@ -131,9 +132,6 @@ function Login() {
           <li onClick={toggleModal} style={{ cursor: "pointer" }}>
             Registrar usuario
           </li>
-          <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
-            <li>Ayuda</li>
-          </Link>
         </ul>
       </nav>
       <main>
@@ -178,14 +176,7 @@ function Login() {
         </section>
       </main>
       <footer>
-        <section className="container-footer">
-          <a
-            target="_blank"
-            style={{ textDecoration: "none", color: "inherit" }}
-          >
-            ¿Olvidaste tu contraseña?
-          </a>
-        </section>
+        <section className="container-footer"></section>
       </footer>
 
       {/* Modal */}
