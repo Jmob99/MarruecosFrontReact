@@ -1,0 +1,13 @@
+#btn_Cerrar_sesion {
+    cursor: pointer;
+    font-size: medium;
+    font-family: "Rajdhani", sans-serif;
+    padding: 10px;
+    font-weight: bold;
+    color: whitesmoke;
+    background-color: #cc0000;
+    box-shadow: 5px 5px rgb(169, 130, 92);
+    border-radius: 5%;
+    height: auto;
+    margin-top: 8rem;
+  }

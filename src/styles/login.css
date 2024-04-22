@@ -1,0 +1,143 @@
+/* Formulario de inicio de sesion */
+
+.container-formulario {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.imagen-usuario {
+  position: absolute;
+  top: 250px;
+  height: 120px;
+  width: 120px;
+  border: 2px solid darkgoldenrod;
+}
+
+.formulario-datos {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 360px;
+  margin: 10px;
+  padding: 10px;
+}
+
+#usuario {
+  padding: 7px;
+  margin: 8px;
+  text-align: center;
+  font-size: large;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: bold;
+  height: 30px;
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+
+#password {
+  padding: 7px;
+  margin: 8px;
+  text-align: center;
+  font-size: large;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: bold;
+  height: 30px;
+  width: 250px;
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+/* Checkbox de inicio de sesion */
+
+.contraseña {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+  margin-right: 115px;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: bolder;
+}
+
+/* Boton */
+
+
+#btn {
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: medium;
+  font-family: "Fira Sans", sans-serif;
+  padding: 6px;
+  font-weight: bold;
+  color: whitesmoke;
+  background-color: #53462d;
+  box-shadow: 3px 3px rgb(169, 130, 92);
+  border-radius: 5%;
+  width: 100px;
+}
+
+.btnRegistrar {
+  cursor: pointer;
+  margin-top: 8px;
+  font-size: medium;
+  font-family: "Fira Sans", sans-serif;
+  padding: 6px;
+  font-weight: bold;
+  color: whitesmoke;
+  background-color:#da6516;;
+  box-shadow: 3px 3px rgb(169, 130, 92);
+  border-radius: 5%;
+  width: 100px;
+}
+
+/* Pie de pagina inicio de sesion */
+.container-footer {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  top: 550px;
+}
+
+.titulo-usuario {
+  display: flex;
+  position: absolute;
+  margin-left: 100px;
+  margin-top: -10px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 25px;
+}
+
+.titulo-contraseña {
+  display: flex;
+  margin-left: 80px;
+  font-family: "Rajdhani", sans-serif;
+  font-size: 25px;
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.custom-modal {
+  background-color: rgb(255, 228, 154);
+}
+
+.modal-visible {
+  background-color: rgb(253, 232, 175);
+}
+
+@media (max-width: 480px) {
+  .listModal {
+    width: 100px;
+    font-size: 8px;
+  }
+}
