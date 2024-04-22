@@ -92,7 +92,6 @@ function Login() {
       alert("Por favor ingresa usuario y contraseña");
       return;
     }
-
     try {
       const auth = getAuth(); // Obtener el objeto de autenticación
       await signInWithEmailAndPassword(auth, usuario, contraseña); // Intentar iniciar sesión
@@ -117,23 +116,9 @@ function Login() {
   }
   return (
     <div>
-      <div className="logo-container">
-        <Logo />
-      </div>
-      <Titulo name={"Inicio Sesion"} />
-      <nav className="container-navR">
-        <ul className="container-lista">
-          <img
-            src="images/logo-hm.png"
-            alt=""
-            className="logo img-fluid"
-            id="logoSize"
-          />
-          <li onClick={toggleModal} style={{ cursor: "pointer" }}>
-            Registrar usuario
-          </li>
-        </ul>
-      </nav>
+      <Logo />
+      <Titulo name={"Inicio de Sesion"} />
+
       <main>
         <section className="container-formulario">
           <img
@@ -169,16 +154,17 @@ function Login() {
               />
               <label htmlFor="checkbox">Mostrar contraseña</label>
             </div>
-            <div className="container-btn">
-              <input type="submit" value="Ingresar" id="btn" />
-            </div>
+            <section className=" text-center row">
+              <div className="col-md-6 mb-6">
+                <button type="submit" value="Ingresar" id="btn">Ingresar</button>
+              </div>
+              <div className="col-md-6 mb-6">
+                <input onClick={toggleModal}  className="btnRegistrar" type="button" value='Registrar'/>
+              </div>
+            </section>
           </form>
         </section>
       </main>
-      <footer>
-        <section className="container-footer"></section>
-      </footer>
-
       {/* Modal */}
       {modalVisible && (
         <>

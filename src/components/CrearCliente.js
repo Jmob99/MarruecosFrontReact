@@ -291,7 +291,7 @@ function CrearCliente() {
         </div>
       </section>
       <section className=" container d-flex justify-content-center align-items-center">
-        <Link to="/">
+        <Link to="/Inicio">
           <button type="submit" id="btnMenuPrincipal">
             Menu Principal
           </button>

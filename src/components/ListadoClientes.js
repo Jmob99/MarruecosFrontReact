@@ -49,18 +49,18 @@ function ListadoClientes() {
                         <h4 className='titleClient'>Usuario {index + 1}</h4>
                     </div>
                     <ul className='listContainer'>
-                        <li> <strong>Tipo de Documento:</strong> {convertirTipoDocumento(usuario.id_tipo_documento)}</li>
-                        <li> <strong>Número de Documento: </strong>{usuario.numero_documento}</li>
-                        <li> <strong>Nombre: </strong>{usuario.nombre}</li>
-                        <li> <strong>Apellido: </strong>{usuario.apellido}</li>
-                        <li> <strong>Dirección: </strong>{usuario.direccion}</li>
-                        <li> <strong>Correo Electrónico: </strong>{usuario.correo_electronico}</li>
-                        <li> <strong>Teléfono: </strong>{usuario.telefono}</li>
+                        <li className='listOption'> <strong>Tipo de Documento:</strong> {convertirTipoDocumento(usuario.id_tipo_documento)}</li>
+                        <li className='listOption'> <strong>Número de Documento: </strong>{usuario.numero_documento}</li>
+                        <li className='listOption'> <strong>Nombre: </strong>{usuario.nombre}</li>
+                        <li className='listOption'> <strong>Apellido: </strong>{usuario.apellido}</li>
+                        <li className='listOption'> <strong>Dirección: </strong>{usuario.direccion}</li>
+                        <li className='listOption'> <strong>Correo Electrónico: </strong>{usuario.correo_electronico}</li>
+                        <li className='listOption'> <strong>Teléfono: </strong>{usuario.telefono}</li>
                     </ul>
                 </div>
             ))}
             <section className=" container d-flex justify-content-center align-items-center">
-                <Link to="/">
+                <Link to="/Inicio">
                     <button type="submit" id="btnMenuPrincipal">
                         Menu Principal
                     </button>
